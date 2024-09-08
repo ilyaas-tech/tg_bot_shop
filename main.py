@@ -8,6 +8,7 @@ from app.database.models import async_main
 
 from dotenv import load_dotenv
 load_dotenv()
+
 async def main():
     await async_main()
     bot = Bot(token=os.getenv('BOT_TOKEN'))

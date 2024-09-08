@@ -33,4 +33,4 @@ async def category(callback: CallbackQuery):
 
     item_info = await get_items_by_id(item_id)
 
-    await callback.message.answer(f'товар: {item_info.title}\nцена: {item_info.price}\nописание: {item_info.description}')
+    await callback.message.answer(f'товар: {item_info.title}\nцена: {item_info.price}\nописание: {item_info.description}', reply_markup=kb.item_use())

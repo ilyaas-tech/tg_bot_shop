@@ -12,13 +12,20 @@ main = ReplyKeyboardMarkup(keyboard=[
     resize_keyboard=True
 )
 
+def item_use():
+    keyboard = InlineKeyboardBuilder()
+    keyboard.add(InlineKeyboardButton(text='на главную', callback_data='to_main'))
+    keyboard.add(InlineKeyboardButton(text='в корзину', callback_data='add_to_cart'))
+
+    return keyboard.adjust(2).as_markup()
+
 
 async def categories():
     all_categories = await get_categories()
     keyboard = InlineKeyboardBuilder()
 
     for category in all_categories:
-        keyboard.add(InlineKeyboardButton(text=category.title, callback_data="category_" + str(category.id)))
+        keyboard.add(InlineKeyboardButton(text=category.title, callback_data='category_' + str(category.id)))
 
     keyboard.add(InlineKeyboardButton(text='На главную', callback_data='to_main'))
     return keyboard.adjust(2).as_markup()
